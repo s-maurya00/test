@@ -74,6 +74,8 @@ def get_match(url):
       batsman['fours'] = str(all_others[1].get_text()).strip()
       batsman['sixes'] = str(all_others[2].get_text()).strip()
       batsman['sr'] = str(all_others[3].get_text()).strip()
+    else:
+      continue
 
     # print all_other
     if len(batsman) > 0:
@@ -157,6 +159,8 @@ def get_match(url):
       batsman['fours'] = str(all_others[1].get_text()).strip()
       batsman['sixes'] = str(all_others[2].get_text()).strip()
       batsman['sr'] = str(all_others[3].get_text()).strip()
+    else:
+      continue
 
     # print all_other
     if len(batsman) > 0:
