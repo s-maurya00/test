@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import csv
 from pprint import pprint
 
 player_template = {"pid":"0","name":"","team_name":"","out_by":"None","runs_scored":"-1","balls_faced":"0","fours":"0","sixes":"0","strike_rate":"0","overs":"0","maiden":"0","runs_given":"0","wickets":"0","no_balls":"0","wide_balls":"0","CROST":"0","extras":"0"}
@@ -272,6 +273,25 @@ def get_match(url):
 
   with open('matches.json','w') as f:
     json.dump(matches,f)
+
+
+
+  # Open the JSON file and load the data
+  with open('matches.json') as json_file:
+    json_data = json.load(json_file)
+
+  # Open a CSV file and create a CSV writer object
+  with open('matches.csv', 'w', newline='') as csv_file:
+    writer = csv.writer(csv_file)
+
+    # Write the header row to the CSV file
+    writer.writerow(json_data["match"][0].keys())
+
+    # Write each row of data to the CSV file
+    for row in json_data:
+      writer.writerow(row.values())
+
+
   return match
 # print json.dumps(matches,sort_keys=True,indent=4, separators=(',', ': '))
 
@@ -281,4 +301,8 @@ print("Enter crickbuzz score-card url for scraping:")
 print("Eg.: \"https://www.cricbuzz.com/live-cricket-scorecard/60035/ind-vs-aus-1st-odi-australia-tour-of-india-2023\"")
 url = input("Enter:\t")
 # url = "https://www.cricbuzz.com/live-cricket-scorecard/60035/ind-vs-aus-1st-odi-australia-tour-of-india-2023"
-pprint(get_match(url))
+# pprint(get_match(url))
+
+get_match(url)
+
+print("Done")
