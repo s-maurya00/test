@@ -37,12 +37,13 @@ def get_match(url):
   Inning1_batting = Inning1.find_all('div',class_="cb-col cb-col-100 cb-ltst-wgt-hdr")[0]
   Inning1_bowling = Inning1.find_all('div',class_="cb-col cb-col-100 cb-ltst-wgt-hdr")[1]
   Inning1_batting = Inning1_batting.find_all('div',class_="cb-col cb-col-100 cb-scrd-itms")
-  Inning1_bowling = Inning1_bowling.find_all('div',class_="cb-col cb-col-100 cb-scrd-itms ")
+  Inning1_bowling = Inning1_bowling.find_all('div',class_="cb-col cb-col-100 cb-scrd-itms")
   Score = Inning1.find_all('span',class_="pull-right")
   score = Score[0].get_text()
   if '-' in score:
     score = score[:score.find('-')]
   team_name = Inning1.find('span').get_text()
+  
   if 'Innings' in team_name:
     team_name = team_name[:team_name.find(' Innings')]
   match['team1_name'] = team_name
@@ -121,7 +122,7 @@ def get_match(url):
   Inning2_batting = Inning2.find_all('div',class_="cb-col cb-col-100 cb-ltst-wgt-hdr")[0]
   Inning2_bowling = Inning2.find_all('div',class_="cb-col cb-col-100 cb-ltst-wgt-hdr")[1]
   Inning2_batting = Inning2_batting.find_all('div',class_="cb-col cb-col-100 cb-scrd-itms")
-  Inning2_bowling = Inning2_bowling.find_all('div',class_="cb-col cb-col-100 cb-scrd-itms ")
+  Inning2_bowling = Inning2_bowling.find_all('div',class_="cb-col cb-col-100 cb-scrd-itms")
   Score = Inning2.find_all('span',class_="pull-right")
   score = Score[0].get_text()
   if '-' in score:
