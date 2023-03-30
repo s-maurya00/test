@@ -276,20 +276,31 @@ def get_match(url):
 
 
 
+
   # Open the JSON file and load the data
-  with open('matches.json') as json_file:
-    json_data = json.load(json_file)
+  with open('matches.json', 'r') as f:
+    data = json.load(f)
 
-  # Open a CSV file and create a CSV writer object
-  with open('matches.csv', 'w', newline='') as csv_file:
-    writer = csv.writer(csv_file)
+  # Open the CSV file and write the data
+  with open('text.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
 
-    # Write the header row to the CSV file
-    writer.writerow(json_data["match"][0].keys())
+    # Write the header row
+    writer.writerow(['match_name', 'url', 'team1_name', 'team1_score', 'team2_name', 'team2_score', 'pid', 'name', 'team_name', 'out_by', 'runs_scored', 'balls_faced', 'fours', 'sixes', 'strike_rate', 'overs', 'maiden', 'runs_given', 'wickets', 'no_balls', 'wide_balls', 'CROST', 'extras'])
 
-    # Write each row of data to the CSV file
-    for row in json_data:
-      writer.writerow(row.values())
+    # Write each row of data
+    for match in data['match']:
+      match_name = match['match_name']
+      url = match['url']
+      team1_name = match['team1_name']
+      team1_score = match['team1_score']
+      team2_name = match['team2_name']
+      team2_score = match['team2_score']
+
+      for pid, player in match['players'].items():
+        row = [match_name, url, team1_name, team1_score, team2_name, team2_score, pid, player['name'], player['team_name'], player['out_by'], player['runs_scored'], player['balls_faced'], player['fours'], player['sixes'], player['strike_rate'], player['overs'], player['maiden'], player['runs_given'], player['wickets'], player['no_balls'], player['wide_balls'], player['CROST'], player['extras']]
+        writer.writerow(row)
+
 
 
   return match
