@@ -224,6 +224,7 @@ def get_match(url):
   for p in Inning1_batting_info:
     if p['pid'] in players:
       players[p['pid']]['name'] = p['name']
+      players[p['pid']]['team_name'] = match['team1_name']
       players[p['pid']]['balls_faced'] = p['balls']
       players[p['pid']]['fours'] = p['fours']
       players[p['pid']]['sixes'] = p['sixes']
@@ -236,6 +237,7 @@ def get_match(url):
   for p in Inning1_bowling_info:
     if p['pid'] in players:
       players[p['pid']]['name'] = p['name']
+      players[p['pid']]['team_name'] = match['team2_name']
       players[p['pid']]['maiden'] = p['maiden']
       players[p['pid']]['overs'] = p['overs']
       players[p['pid']]['no_balls'] = p['no_balls']
@@ -248,6 +250,7 @@ def get_match(url):
   for p in Inning2_batting_info:
     if p['pid'] in players:
       players[p['pid']]['name'] = p['name']
+      players[p['pid']]['team_name'] = match['team2_name']
       players[p['pid']]['balls_faced'] = p['balls']
       players[p['pid']]['fours'] = p['fours']
       players[p['pid']]['sixes'] = p['sixes']
@@ -260,6 +263,7 @@ def get_match(url):
   for p in Inning2_bowling_info:
     if p['pid'] in players:
       players[p['pid']]['name'] = p['name']
+      players[p['pid']]['team_name'] = match['team1_name']
       players[p['pid']]['maiden'] = p['maiden']
       players[p['pid']]['overs'] = p['overs']
       players[p['pid']]['no_balls'] = p['no_balls']
