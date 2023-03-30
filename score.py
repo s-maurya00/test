@@ -287,7 +287,7 @@ def get_match(url):
     data = json.load(f)
 
   # Open the CSV file and write the data
-  with open('text.csv', 'w', newline='') as f:
+  with open('match_data.csv', 'w', newline='') as f:
     writer = csv.writer(f)
 
     # Write the header row
