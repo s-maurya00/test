@@ -277,5 +277,8 @@ def get_match(url):
 
 
 
-url = "http://www.cricbuzz.com/cricket-scorecard/16391/kxip-vs-gl-3rd-match-indian-premier-league-2016"
+print("Enter crickbuzz score-card url for scraping:")
+print("Eg.: \"https://www.cricbuzz.com/live-cricket-scorecard/60035/ind-vs-aus-1st-odi-australia-tour-of-india-2023\"")
+url = input("Enter:\t")
+# url = "https://www.cricbuzz.com/live-cricket-scorecard/60035/ind-vs-aus-1st-odi-australia-tour-of-india-2023"
 pprint(get_match(url))
